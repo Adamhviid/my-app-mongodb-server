@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
-import connectMongoDB from "./startup/mongoDB.js";
+import connectMongoDB from "./mongodb/startup_mongoDB.js";
 import API from "./API/theAudioDb_API.js";
+import routes from "./mongodb/routes/artists.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,6 +17,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use('/api', API);
+app.use('/db', routes)
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
