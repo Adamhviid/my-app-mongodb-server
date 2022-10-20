@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import connectMongoDB from "./mongodb/startup_mongoDB.js";
-import API from "./API/theAudioDb_API.js";
-import routes from "./mongodb/routes/artists.js";
+import Api from "./API/theAudioDb_API.js";
+import Artist from "./mongodb/routes/artists.js";
+import Album from "./mongodb/routes/albums.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,8 +17,9 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use('/api', API);
-app.use('/db', routes)
+app.use('/api', Api);
+app.use('/db', Artist)
+app.use('/db', Album)
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
