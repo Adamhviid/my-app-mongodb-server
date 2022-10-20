@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/search/albums/:artist", async (req, res) => {
   const albums = await Album.find({
-    strArtist: new RegExp("^" + req.params.artist.toLowerCase(), "i"),
+    strArtist: new RegExp("^" + req.params.artist.toLowerCase(), "i")
   });
 
   if (!albums.length > 0) {

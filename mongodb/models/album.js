@@ -12,7 +12,6 @@ const albumSchema = new mongoose.Schema({
   strGenre: { type: String },
   strLabel: { type: String },
   strReleaseFormat: { type: String },
-  intSales: { type: String },
   strAlbumThumb: { type: String },
   strAlbumCDart: { type: String },
   strDescriptionEN: { type: String },

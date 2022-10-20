@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/search/artist/:artist", async (req, res) => {
   const artist = await Artist.findOne({
-    strArtist: new RegExp("^" + req.params.artist.toLowerCase(), "i"), //using regex to search in lowercase
+    strArtist: new RegExp("^" + req.params.artist.toLowerCase(), "i")
   });
 
   if (!artist) {
@@ -21,5 +21,4 @@ router.get("/search/artist/:artist", async (req, res) => {
   }
 });
 
-//export this router to use in our index.js
 export default router;
