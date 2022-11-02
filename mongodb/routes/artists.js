@@ -17,7 +17,7 @@ router.get("/search/artist/:artist", async (req, res) => {
     artist = await artist.save();
     setTimeout(() => { res.json(artist); }, 5000);
   } else {
-    res.json(artist);
+  res.json(artist);
   }
 });
 
