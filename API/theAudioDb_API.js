@@ -43,5 +43,5 @@ router.get("/search/albums/:artist", (req, res) => {
   });
 })
 
-//export this router to use in our index.js
+
 export default router;
