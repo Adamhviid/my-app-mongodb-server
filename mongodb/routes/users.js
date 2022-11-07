@@ -3,7 +3,8 @@ import axios from "axios";
 import { User } from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
@@ -18,18 +19,18 @@ router.post("/register", async (req, res) => {
 
     // check if user already exist
     // Validate if user exist in our database
-    const lowercaseEmail = (email.toLowerCase());
-    const oldUser = await User.findOne({ lowercaseEmail });
+    const oldUser = await User.findOne({ email });
 
     if (oldUser) {
       return res.status(409).send("User Already Exist. Please Login");
     }
-
+    
     //Encrypt user password
-    const encryptedPassword = await bcrypt.hash(password, 10);
+    const salt = await bcrypt.genSalt(10);
+    const encryptedPassword = await bcrypt.hash(password, salt);
 
     const user = await User.create({
-      email: email.toLowerCase(), // sanitize: convert email to lowercase
+      email: email,
       password: encryptedPassword,
     });
 
@@ -38,7 +39,7 @@ router.post("/register", async (req, res) => {
       { user_id: user._id, email },
       process.env.TOKEN_KEY,
       {
-        expiresIn: "2h",
+        expiresIn: "24h",
       }
     );
     user.token = token;
