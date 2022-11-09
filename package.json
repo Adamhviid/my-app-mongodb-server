@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "vidly-backend",
+  "name": "my-app-mongodb-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
