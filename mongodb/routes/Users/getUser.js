@@ -2,18 +2,18 @@ import express from "express";
 import { User } from "../../models/user.js";
 import * as dotenv from 'dotenv'
 dotenv.config()
-import auth from "../../middleware/auth.js";
+import verifyToken from "../../middleware/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/user", auth, async (req, res) => {
-  console.log("veryfing token");
+router.post("/user", verifyToken, async (req, res) => {
+  const user = res.user;
   try {
-    const user = await User.find();
-    if (!user) {
+    const findUser = await User.findOne(user);
+    if (!findUser) {
       return res.json({ message: 'No user found' })
     }
-    return res.json({ user: user })
+    return res.status(200).json(findUser);
   } catch (error) {
     return res.json({ error: error });
   }
