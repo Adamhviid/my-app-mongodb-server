@@ -10,7 +10,7 @@ import Login from "./mongodb/routes/Users/login.js";
 import Register from "./mongodb/routes/Users/register.js";
 import GetUser from "./mongodb/routes/Users/getUser.js";
 
-import Neo4jAlbums from "./mongodb/routes/neo4jAlbums.js";
+import Neo4jAlbums from "./neo4j/neo4jAlbums.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
