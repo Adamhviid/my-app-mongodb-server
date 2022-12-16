@@ -46,6 +46,7 @@ async function createAlbumOwner(driver, artist, album) {
     );
 
   } catch (error) {
+    console.error(`Something went wrong: ${error}`);
   } finally {
     await session.close();
   }
