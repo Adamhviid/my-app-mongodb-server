@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const albumSchema = new mongoose.Schema({
-  idAlbum: { type: String, required: true },
+  idAlbum: { type: String },
   idArtist: { type: String },
   idLabel: { type: String },
   strAlbum: { type: String },

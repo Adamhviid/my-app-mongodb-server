@@ -10,6 +10,8 @@ import Login from "./mongodb/routes/Users/login.js";
 import Register from "./mongodb/routes/Users/register.js";
 import GetUser from "./mongodb/routes/Users/getUser.js";
 
+import Neo4jAlbums from "./mongodb/routes/neo4jAlbums.js";
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -27,7 +29,7 @@ app.use(cookieParser());
 
 app.use('/api', Api);
 app.use('/db', Artist)
-app.use('/db', Album)
+app.use('/db', Neo4jAlbums)
 app.use('/auth', Login)
 app.use('/auth', Register)
 app.use('/auth', GetUser)
