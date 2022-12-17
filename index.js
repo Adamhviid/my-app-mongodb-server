@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import connectMongoDB from "./mongodb/startup_mongoDB.js";
 import Api from "./API/theAudioDb_API.js";
 import Artist from "./mongodb/routes/artists.js";
-import Album from "./mongodb/routes/albums.js";
+/* import Album from "./mongodb/routes/albums.js"; */
 import Login from "./mongodb/routes/Users/login.js";
 import Register from "./mongodb/routes/Users/register.js";
 import GetUser from "./mongodb/routes/Users/getUser.js";
