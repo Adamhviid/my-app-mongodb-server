@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "my-app mongodb and graphdb",
+  "name": "my-app-mysql-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
