@@ -18,7 +18,7 @@ router.get("/search/albums/:artist", async (req, res) => {
       if (result === null || result.length === 0) {
         console.log("No albums found in Neo4j");
         const { data } = await axios.get(
-          "http://localhost:3001/api/search/albums/" + artist
+          `${process.env.PORT}` + "/api/search/albums/" + artist
         );
         for (let i = 0; i < data.album.length; i++) {
           await createAlbumOwner(driver, artist, data.album[i]);

@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 import connectMongoDB from "./mongodb/startup_mongoDB.js";
 import Api from "./API/theAudioDb_API.js";
@@ -12,7 +14,7 @@ import GetUser from "./mongodb/routes/Users/getUser.js";
 
 import Neo4jAlbums from "./neo4j/neo4jAlbums.js";
 
-const PORT = 3001;
+const PORT = `${process.env.PORT}` || 3001;
 const app = express();
 
 connectMongoDB();

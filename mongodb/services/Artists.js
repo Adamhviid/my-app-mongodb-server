@@ -9,7 +9,7 @@ export default async function Artists(artist) {
       .then(async (result) => {
         if (result === null || result.length === 0) {
           const { data } = await axios.get(
-            "http://localhost:3001/api/search/artist/" + artist
+            `${process.env.PORT}` + "/api/search/artist/" + artist
           );
           let newArtist = new Artist(data)
           await newArtist.save();
