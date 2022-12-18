@@ -16,6 +16,7 @@ router.get("/search/albums/:artist", async (req, res) => {
   await getAlbumsByArtist(driver, artist)
     .then(async (result) => {
       if (result === null || result.length === 0) {
+        console.log("No albums found in Neo4j");
         const { data } = await axios.get(
           "http://localhost:3001/api/search/albums/" + artist
         );
@@ -27,6 +28,7 @@ router.get("/search/albums/:artist", async (req, res) => {
           res.json(neo4jAlbums);
         }, 1000);
       } else {
+        console.log("Albums found in Neo4j");
         res.json(result);
       }
     });

@@ -23,17 +23,9 @@ export default async function Register(email, password) {
       email: email,
       password: encryptedPassword,
     })
-
-    const token = jwt.sign(
-      { user_id: user._id, email },
-      process.env.JWT_TOKEN_SECRET,
-      {
-        expiresIn: "24h",
-      }
-    );
-    user.token = token;
     return user;
   } catch (error) {
     return error;
   }
 }
+

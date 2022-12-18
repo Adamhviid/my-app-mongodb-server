@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -11,6 +11,7 @@ export default async function Albums(artist) {
     })
       .then(async (result) => {
         if (result === null || result.length === 0) {
+          console.log("No albums found in database, fetching from API");
           const { data } = await axios.get(
             "http://localhost:3001/api/search/albums/" + artist
           );
@@ -34,4 +35,4 @@ export default async function Albums(artist) {
   } catch (err) {
     return err;
   }
-}
+} */
