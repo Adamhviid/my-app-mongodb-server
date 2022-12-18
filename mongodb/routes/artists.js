@@ -1,25 +1,33 @@
 import express from "express";
-import axios from "axios";
+/* import Artist from "../services/Artists.js"; */
 import { Artist } from "../models/artist.js";
 
 const router = express.Router();
 
 router.get("/search/artist/:artist", async (req, res) => {
-  const artist = await Artist.findOne({
-    strArtist: new RegExp("^" + req.params.artist.toLowerCase(), "i")
+  const { artist } = req.params;
+
+  await Artist.findOne({
+    strArtist: new RegExp("^" + artist.toLowerCase(), "i")
+  }).then(async (result) => {
+    if (result === null || result.length === 0) {
+      const { data } = await axios.get(
+        "http://localhost:3001/api/search/artist/" + artist
+      );
+      let newArtist = new Artist(data)
+      await newArtist.save();
+    } else {
+      res.json(result);
+    }
   });
 
-  if (!artist) {
-    const { data } = await axios.get(
-      "http://localhost:3001/api/search/artist/" + req.params.artist
-    );
-    let artist = new Artist(data)
-    artist = await artist.save();
-    setTimeout(() => { res.json(artist); }, 5000);
-  } else {
-    res.json(artist);
-
-  }
+  /* Artist(artist)
+    .then((result) => {
+      res.send(200).json(result)
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    }); */
 });
 
 export default router;

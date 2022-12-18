@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "my-app-mysql-server",
+  "name": "my-app-mongodb-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
