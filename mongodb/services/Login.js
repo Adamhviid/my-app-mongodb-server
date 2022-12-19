@@ -6,14 +6,17 @@ dotenv.config()
 
 export default async function Login(email, password) {
   try {
+    if (!(email && password)) {
+      return "All input is required";
+    }
     const user = await User.findOne({ email });
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if (user && isPasswordValid) {
+    if (user != null && isPasswordValid === true) {
       const token = jwt.sign(
         {
           user_id: user.id,
-          email: email,
+          email: user.email,
           authorization: user.authorization
         },
         `${process.env.JWT_TOKEN_SECRET}`,
@@ -27,6 +30,6 @@ export default async function Login(email, password) {
       return "Email or password is incorrect"
     }
   } catch (err) {
-    console.log(err);
+    return err
   }
 }

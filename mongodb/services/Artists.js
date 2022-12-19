@@ -11,7 +11,7 @@ export default async function Artists(artist) {
           const { data } = await axios.get(
             `${process.env.PORT}` + "/api/search/artist/" + artist
           );
-          let newArtist = new Artist(data)
+          const newArtist = new Artist(data)
           await newArtist.save();
           await Artist.findOne({
             strArtist: new RegExp("^" + artist.toLowerCase(), "i")
