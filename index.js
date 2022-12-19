@@ -14,7 +14,7 @@ import GetUser from "./mongodb/routes/Users/getUser.js";
 
 import Neo4jAlbums from "./neo4j/neo4jAlbums.js";
 
-const PORT = `${process.env.PORT}` || 3001;
+const PORT = 3001
 const app = express();
 
 connectMongoDB();
@@ -33,8 +33,3 @@ app.use('/auth', GetUser)
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
-
-
-
-
-
