@@ -1,4 +1,5 @@
 import express from "express";
+import axios from "axios";
 import { Artist } from "../models/artist.js";
 
 const router = express.Router();
