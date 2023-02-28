@@ -11,7 +11,7 @@ router.get("/search/albums/:artist", async (req, res) => {
       res.status(200).json(result);
     })
     .catch((err) => {
-      res.status(400).send(err);
+      res.status(400).send("err");
     });
 });
 
